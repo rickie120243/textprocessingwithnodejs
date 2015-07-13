@@ -1,3 +1,6 @@
+/*
+	convert to JSON, for checking repeated id
+*/
 var fs=require("fs");
 var lst=fs.readFileSync("data/data.lst","utf8").split(/\r?\n/);
 var tojson=function(fn) {

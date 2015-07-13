@@ -1,3 +1,4 @@
+/* load a set of files, filename is given by a list file*/
 var fs=require("fs");
 var lst=fs.readFileSync("data/data.lst","utf8").split(/\r?\n/);
 var showfileline=function(fn) {
