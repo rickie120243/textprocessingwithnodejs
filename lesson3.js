@@ -8,23 +8,16 @@ var tojson=function(fn) {
 	for (var i=0;i<lines.length;i++) {
 		var L=lines[i].split("\t");
 		var id=L[0],text=L[1];
+		if (out[id]) {
+			console.log("repeat id",id,"at line",i+1,"of",fn)
+		}
 		out[id]=text;
 	}
 	return out;
 }
-
-
-var combine=function(jsons) {
-	var out={};
-	for (var i=0;i<jsons.length;i++) {
-		var json=jsons[i];
-		for (var id in json) {
-			if (!out[id]) out[id]=[];
-			out[id].push(json[id]);
-		}
-	}
-	return out;
+var writejson=function(json,idx) {
+	var fn="out/"+lst[idx]+".json";
+	fs.writeFileSync(outfn,JSON.stringify(json,""," "),"utf8");	
 }
-
-var output=combine( lst.map(tojson));
-fs.writeFileSync("combined.txt",JSON.stringify(output,""," "),"utf8");
+var output = lst.map(tojson);
+output.map(writejson);
