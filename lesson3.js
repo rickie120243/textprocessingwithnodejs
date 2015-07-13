@@ -19,7 +19,7 @@ var tojson=function(fn) {
 	return out;
 }
 var writejson=function(json,idx) {
-	var fn="out/"+lst[idx]+".json";
+	var outfn="out/"+lst[idx]+".json";
 	fs.writeFileSync(outfn,JSON.stringify(json,""," "),"utf8");	
 }
 var output = lst.map(tojson);
