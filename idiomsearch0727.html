@@ -1,0 +1,22 @@
+<html>
+<script src="words.js">	</script>
+<script src="idiomsearchui.js">	</script>
+<head>
+	<meta charset="utf8">
+<title>成語搜尋</title>
+</head>
+<body>
+	<input id="typeinput" value="花" onKeyPress="keypress(event)"></input>
+	<button onClick="search()">search</button>
+	<div id="output"></div>
+</body>
+<script>
+	var keypress=function(e){
+		if(e.keyCode==13) search();
+	}
+	var search=function(){
+		var out=regexmatch(typeinput.value);
+		document.getElementById("output").innerHTML=render(out,typeinput.value).join("");
+	}
+</script>
+</html>

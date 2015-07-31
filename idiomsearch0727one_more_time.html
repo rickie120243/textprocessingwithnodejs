@@ -1,0 +1,38 @@
+<html>
+<head>
+	<script src="words.js"></script>
+	<meta charset="utf8">
+	<title>成語搜尋</title>
+</head>
+<body>
+	<input id="tofind" value="馬" onKeyPress="keypress(event)"></input>
+	<button onClick="search()">search</button>
+	<div id="result"></div>
+<script>
+	var regexmatch=function(){
+		var regex=document.getElementById("tofind").value;
+		return words.filter(function(item){
+			var m=item.match(regex);
+			if(m){
+				console.log(item,regex);
+			}
+			return m;
+		});
+	}
+	var search=function(){
+		var out=regexmatch(tofind.value);
+		document.getElementById("result").innerHTML=render(out,tofind.value).join("<br/>");
+	}
+	var render=function(searchresult,tofind){
+		var out=searchresult.map(function(item,idx){
+			return (idx+1)+"."+item;
+		});
+		return out;
+	}
+
+</script>
+
+</body>
+
+
+</html>
