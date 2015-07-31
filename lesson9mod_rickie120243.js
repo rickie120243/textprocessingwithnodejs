@@ -27,7 +27,7 @@ var syllable_stat=function(lst,prefix) {
 	var fs=require("fs");
 	var syllables={};
 	var total=0;
-
+        prefix=prefix||"";
 	var dofile=function(fn) {
 		console.log("processing",fn);
 		var syls=breakSyllable(fs.readFileSync(prefix+fn,"utf8"));
